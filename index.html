@@ -4,42 +4,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science Time</title>
+    <meta name="description" content="Science Time - Exploring the universe through code and words.">
+    <meta name="author" content="Science Time">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Science Time">
+    <meta property="og:description" content="Science Time - Exploring the universe through code and words.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Science Time">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>sciencetime.in</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
 
-        h1 {
-            font-size: 60px;
-        }
-
-        p {
-            text-align: center;
-            color: #cbd5e1;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- ====== SPACETIME GRID CANVAS ====== -->
+    <canvas id="spacetime-canvas" aria-hidden="true"></canvas>
 
-    <div>
-        <h1>Science Time</h1>
+    <div class="content-wrapper">
+        <!-- ── Header ── -->
+        <header class="site-header">
+            <div class="container header-inner">
+                <a href="#" class="logo">
+                    <span class="sc">//</span><span class="sg">sciencetime<span class="so">.</span><span
+                            class="ss">in</span>
+                </a>
+                <nav class="desktop-nav" aria-label="Main navigation">
+                    <a href="#essays" class="nav-link">/essays</a>
+                    <a href="#about" class="nav-link">/about</a>
+                    <a href="#subscribe" class="nav-link">/subscribe</a>
+                </nav>
+                <button id="mob-btn" class="mobile-toggle sc" aria-label="Toggle menu"
+                    aria-expanded="false">[menu]</button>
+            </div>
+            <nav id="mob-menu" class="mobile-nav hidden" aria-label="Mobile navigation">
+                <a href="#essays" class="nav-link">/essays</a>
+                <a href="#about" class="nav-link">/about</a>
+                <a href="#subscribe" class="nav-link">/subscribe</a>
+            </nav>
+        </header>
 
-        <p>
-            Coming Soon...
-        </p>
+        <!-- ── Hero ── -->
+        <section id="hero" class="hero-section section-pad">
+            <div class="container">
+                <p class="section-label sc">&gt; cd /universe/exploration</p>
 
+                <div class="hero-title">
+                    <span class="sc">/*</span><br>
+                    <span id="hero-text" class="sg"></span><span class="hero-cursor"></span><br>
+                    <span class="sc">*/</span>
+                </div>
+
+                <p class="hero-desc sc">
+                    Science take on nature of reality.<br>
+                </p>
+                <p class="hero-hint sc">[ move your cursor to bend spacetime ]</p>
+
+                <a href="#essays" class="btn-read sf">
+                    read_latest<span class="so">()</span> <span class="sc">→</span>
+                </a>
+            </div>
+
+            <div class="scroll-indicator scroll-anim sc">
+                <span>scroll</span>
+                <svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5.5 1v16M1 13l4.5 4L10 13" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- ── Essays ── -->
+        <section id="essays" class="essays-section section-pad section-bg">
+            <div class="container">
+                <p class="section-label sc">// section</p>
+                <h2 class="section-title"><span class="sf">recent_writes</span><span class="so">()</span></h2>
+                <p class="section-desc sc">// Latest essays on science, physics, and the cosmos</p>
+
+                <div class="articles-list" id="articles-list">
+                    <!-- Article 1 -->
+                    <article class="article-card">
+                        <div class="article-inner">
+                            <div class="article-lines">
+                                <span class="line-num">01</span>
+                                <span class="line-num">02</span>
+                                <span class="line-num">03</span>
+                                <span class="line-num">04</span>
+                                <span class="line-num">05</span>
+                                <span class="line-num">06</span>
+                                <span class="line-num">07</span>
+                                <span class="line-num">08</span>
+                                <span class="line-num">09</span>
+                                <span class="line-num">10</span>
+                            </div>
+                            <div class="article-content">
+                                <div><span class="sc">/**</span></div>
+                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="sk">The Illusion of
+                                        Time</span></div>
+                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="tag">"physics"</span> <span
+                                        class="tag">"relativity"</span> <span class="tag">"entropy"</span></div>
+                                <div><span class="sc">*/</span></div>
+                                <div class="spacer"></div>
+                                <div class="article-body">
+                                    <div>Is time a fundamental property of reality,</div>
+                                    <div>or an emergent phenomenon arising from</div>
+                                    <div>the second law of thermodynamics?</div>
+                                </div>
+                                <div class="spacer"></div>
+                                <div class="article-footer">
+                                    <span class="sn">2024.12.15</span>
+                                    <span class="sc">·</span>
+                                    <span class="sc">8_min_read</span>
+                                    <a href="articles/the-illusion-of-time.html" class="sf read-link">read() →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="article-card">
+                        <div class="article-inner">
+                            <div class="article-lines">
+                                <span class="line-num">01</span>
+                                <span class="line-num">02</span>
+                                <span class="line-num">03</span>
+                                <span class="line-num">04</span>
+                                <span class="line-num">05</span>
+                                <span class="line-num">06</span>
+                                <span class="line-num">07</span>
+                                <span class="line-num">08</span>
+                                <span class="line-num">09</span>
+                                <span class="line-num">10</span>
+                            </div>
+                            <div class="article-content">
+                                <div><span class="sc">/**</span></div>
+                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="sk">Dark Matter: The
+                                        Invisible Scaffold</span></div>
+                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="tag">"cosmology"</span>
+                                    <span class="tag">"astrophysics"</span>
+                                </div>
+                                <div><span class="sc">*/</span></div>
+                                <div class="spacer"></div>
+                                <div class="article-body">
+                                    <div>85% of the matter in the universe is</div>
+                                    <div>invisible. What we know about dark matter,</div>
+                                    <div>and why it might not exist at all.</div>
+                                </div>
+                                <div class="spacer"></div>
+                                <div class="article-footer">
+                                    <span class="sn">2024.11.28</span>
+                                    <span class="sc">·</span>
+                                    <span class="sc">12_min_read</span>
+                                    <a href="articles/dark-matter.html" class="sf read-link">read() →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="article-card">
+                        <div class="article-inner">
+                            <div class="article-lines">
+                                <span class="line-num">01</span>
+                                <span class="line-num">02</span>
+                                <span class="line-num">03</span>
+                                <span class="line-num">04</span>
+                                <span class="line-num">05</span>
+                                <span class="line-num">06</span>
+                                <span class="line-num">07</span>
+                                <span class="line-num">08</span>
+                                <span class="line-num">09</span>
+                                <span class="line-num">10</span>
+                            </div>
+                            <div class="article-content">
+                                <div><span class="sc">/**</span></div>
+                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="sk">Quantum Entanglement
+                                        Demystified</span></div>
+                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="tag">"quantum"</span> <span
+                                        class="tag">"physics"</span> <span class="tag">"spooky"</span></div>
+                                <div><span class="sc">*/</span></div>
+                                <div class="spacer"></div>
+                                <div class="article-body">
+                                    <div>Einstein called it "spooky action at a</div>
+                                    <div>distance." But quantum entanglement is</div>
+                                    <div>far stranger than even he imagined.</div>
+                                </div>
+                                <div class="spacer"></div>
+                                <div class="article-footer">
+                                    <span class="sn">2024.11.10</span>
+                                    <span class="sc">·</span>
+                                    <span class="sc">10_min_read</span>
+                                    <a href="articles/quantum-entanglement.html" class="sf read-link">read() →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="view-archive">
+                    <a href="#" class="sc archive-link">view_archive() <span>→</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── About ── -->
+        <section id="about" class="about-section section-pad section-bg-alt">
+            <div class="container">
+                <p class="section-label sc">// section</p>
+                <h2 class="section-title"><span class="sf">about_this_blog</span><span class="so">()</span></h2>
+                <p class="section-desc sc">// What this is and why it exists</p>
+
+                <div class="code-block">
+                    <div class="code-line"><span class="line-num">01</span>
+                        <div class="code-text"><span class="sk">const</span> <span class="sv">mission</span> <span
+                                class="so">=</span> <span class="ss">"to make complex science accessible through clear,
+                                thoughtful writing"</span><span class="so">;</span></div>
+                    </div>
+                    <div class="code-line"><span class="line-num">02</span>
+                        <div class="code-text"></div>
+                    </div>
+                    <div class="code-line"><span class="line-num">03</span>
+                        <div class="code-text"><span class="sc">// Every essay is written with the belief that</span>
+                        </div>
+                    </div>
+                    <div class="code-line"><span class="line-num">04</span>
+                        <div class="code-text"><span class="sc">// you don't need a PhD to appreciate the beauty</span>
+                        </div>
+                    </div>
+                    <div class="code-line"><span class="line-num">05</span>
+                        <div class="code-text"><span class="sc">// of the universe. You just need curiosity.</span>
+                        </div>
+                    </div>
+                    <div class="code-line"><span class="line-num">06</span>
+                        <div class="code-text"></div>
+                    </div>
+                    <div class="code-line"><span class="line-num">07</span>
+                        <div class="code-text"><span class="sk">if</span> <span class="so">(</span><span
+                                class="sv">you</span><span class="so">.</span><span class="sf">haveCuriosity</span><span
+                                class="so">()) {</span></div>
+                    </div>
+                    <div class="code-line"><span class="line-num">08</span>
+                        <div class="code-text">&nbsp;&nbsp;<span class="sf">subscribe</span><span class="so">();</span>
+                            <span class="sc">// you'll feel at home here</span>
+                        </div>
+                    </div>
+                    <div class="code-line"><span class="line-num">09</span>
+                        <div class="code-text"><span class="so">}</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Subscribe ── -->
+        <section id="subscribe" class="subscribe-section section-pad section-bg">
+            <div class="container">
+                <p class="section-label sc">// section</p>
+                <h2 class="section-title"><span class="sf">subscribe</span><span class="so">(</span><span
+                        class="sv">email</span><span class="so">)</span></h2>
+                <p class="section-desc sc">// Get new essays delivered to your inbox</p>
+
+                <div class="subscribe-form-container">
+                    <form class="subscribe-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="your@email.com" required class="sub-input"
+                            aria-label="Email address">
+                        <button type="submit" class="sub-btn">send()</button>
+                    </form>
+                    <p class="subscribe-note sc">// No spam. Unsubscribe anytime. Just science.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Footer ── -->
+        <footer class="site-footer">
+            <div class="container footer-inner">
+                <div class="footer-left sc">
+                    <span>// end of transmission</span><br>
+                    <span class="copyright">© <span id="yr"></span> sciencetime.in</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="nav-link">/github</a>
+                    <a href="#" class="nav-link">/twitter</a>
+                    <a href="#" class="nav-link">/rss</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
+    <!-- ====== SCRIPTS ====== -->
+    <script src="script.js"></script>
 </body>
 
 </html>
