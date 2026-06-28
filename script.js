@@ -1,7 +1,41 @@
 // ──────────────────────────────────────────────
+// 0.  THEME INITIALIZATION & TOGGLE
+// ──────────────────────────────────────────────
+(function() {
+    const root = document.documentElement;
+    let isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    function applyTheme(dark) {
+        if (dark) {
+            root.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            root.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        }
+        document.dispatchEvent(new CustomEvent('themeChanged'));
+    }
+
+    // Apply immediately to prevent flash
+    applyTheme(isDark);
+
+    // Wait for DOM to hook up buttons
+    document.addEventListener("DOMContentLoaded", () => {
+        const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                isDark = !isDark;
+                applyTheme(isDark);
+            });
+        });
+    });
+})();
+
+// ──────────────────────────────────────────────
 // 1.  HERO TYPING EFFECT
 // ──────────────────────────────────────────────
-const heroStr = "the universe, decoded.\nline by line.";
+const heroStr = "The Universe, Decoded.";
 let heroIdx = 0;
 const heroEl = document.getElementById("hero-text");
 
@@ -54,13 +88,35 @@ if (yearEl) {
     const CONNECT_DISTANCE = 140; // max distance to draw a line between particles
     const MOUSE_DISTANCE = 200;   // max distance for mouse interaction
     const PARTICLE_SPEED = 0.4;
+
     
-    // Theme colors: Green (#00ff9c), Blue (#61afef), Purple (#c678dd)
-    const COLORS = [
-        { r: 0, g: 255, b: 156 },
-        { r: 97, g: 175, b: 239 },
-        { r: 198, g: 120, b: 221 }
-    ];
+
+    function getThemeColors() {
+        const rs = getComputedStyle(document.documentElement);
+        // Provide fallback strings to parse if css variables aren't ready
+        const p1 = rs.getPropertyValue('--canvas-p1').trim() || '0,255,156';
+        const p2 = rs.getPropertyValue('--canvas-p2').trim() || '97,175,239';
+        const p3 = rs.getPropertyValue('--canvas-p3').trim() || '198,120,221';
+        const line = rs.getPropertyValue('--canvas-line').trim() || '0,255,156';
+        
+        const parseRGB = (str) => {
+            const parts = str.split(',').map(s => parseInt(s.trim()));
+            return { r: parts[0] || 0, g: parts[1] || 255, b: parts[2] || 156 };
+        };
+        return {
+            colors: [parseRGB(p1), parseRGB(p2), parseRGB(p3)],
+            line: parseRGB(line)
+        };
+    }
+    
+    let themeColors = getThemeColors();
+    document.addEventListener('themeChanged', () => {
+        themeColors = getThemeColors();
+        particles.forEach(p => {
+            p.baseColor = themeColors.colors[Math.floor(Math.random() * themeColors.colors.length)];
+        });
+    });
+
 
     /* ---- State ---- */
     let W, H, dpr;
@@ -77,7 +133,7 @@ if (yearEl) {
         cvs.style.width = W + "px";
         cvs.style.height = H + "px";
         ctx.scale(dpr, dpr);
-        
+
         initParticles();
     }
 
@@ -89,9 +145,9 @@ if (yearEl) {
             const angle = Math.random() * Math.PI * 2;
             this.vx = Math.cos(angle) * PARTICLE_SPEED;
             this.vy = Math.sin(angle) * PARTICLE_SPEED;
-            
+
             this.radius = Math.random() * 1.5 + 0.5;
-            this.baseColor = COLORS[Math.floor(Math.random() * COLORS.length)];
+            this.baseColor = themeColors.colors[Math.floor(Math.random() * themeColors.colors.length)];
         }
 
         update() {
@@ -99,7 +155,7 @@ if (yearEl) {
             const dx = mx - this.x;
             const dy = my - this.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            
+
             if (dist < MOUSE_DISTANCE) {
                 const force = (MOUSE_DISTANCE - dist) / MOUSE_DISTANCE;
                 this.x -= (dx / dist) * force * 2;
@@ -113,7 +169,7 @@ if (yearEl) {
             // Bounce off walls smoothly
             if (this.x < 0 || this.x > W) this.vx *= -1;
             if (this.y < 0 || this.y > H) this.vy *= -1;
-            
+
             // Failsafe bounds
             if (this.x < -50) this.x = W + 50;
             if (this.x > W + 50) this.x = -50;
@@ -132,9 +188,9 @@ if (yearEl) {
     function initParticles() {
         particles = [];
         // Adjust particle count based on screen size for performance
-        const count = Math.floor((W * H) / 12000); 
+        const count = Math.floor((W * H) / 12000);
         const finalCount = Math.min(Math.max(count, 50), PARTICLE_COUNT);
-        
+
         for (let i = 0; i < finalCount; i++) {
             particles.push(new Particle());
         }
@@ -150,10 +206,10 @@ if (yearEl) {
 
         // Draw connections (highly optimized loop)
         ctx.lineWidth = 0.8;
-        
+
         for (let i = 0; i < particles.length; i++) {
             const p1 = particles[i];
-            
+
             // Connect to mouse if close enough
             const dxm = mx - p1.x;
             const dym = my - p1.y;
@@ -163,7 +219,7 @@ if (yearEl) {
                 ctx.beginPath();
                 ctx.moveTo(p1.x, p1.y);
                 ctx.lineTo(mx, my);
-                ctx.strokeStyle = `rgba(0, 255, 156, ${opacity * 0.5})`; // Neon green connecting to mouse
+                ctx.strokeStyle = `rgba(${themeColors.line.r}, ${themeColors.line.g}, ${themeColors.line.b}, ${opacity * 0.5})`;
                 ctx.stroke();
             }
 
@@ -176,17 +232,17 @@ if (yearEl) {
                 if (dx * dx + dy * dy < CONNECT_DISTANCE * CONNECT_DISTANCE) {
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     const opacity = 1 - (dist / CONNECT_DISTANCE);
-                    
+
                     ctx.beginPath();
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
-                    
+
                     // Blend colors for lines based on the first particle
                     ctx.strokeStyle = `rgba(${p1.baseColor.r}, ${p1.baseColor.g}, ${p1.baseColor.b}, ${opacity * 0.35})`;
                     ctx.stroke();
                 }
             }
-            
+
             // Finally, draw the particle dot on top
             p1.draw();
         }
@@ -208,3 +264,57 @@ if (yearEl) {
     resize();
     draw();
 })();
+
+// ──────────────────────────────────────────────
+// 5.  VIEW ARCHIVE
+// ──────────────────────────────────────────────
+const viewArchiveBtn = document.getElementById("view-archive-btn");
+if (viewArchiveBtn) {
+    viewArchiveBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const hiddenItems = document.querySelectorAll(".archive-item.hidden");
+        hiddenItems.forEach(item => {
+            item.classList.remove("hidden");
+        });
+        // Hide the button container since we've shown all items
+        viewArchiveBtn.parentElement.style.display = "none";
+    });
+}
+
+
+// ──────────────────────────────────────────────
+// 6. CATEGORY FILTERING
+// ──────────────────────────────────────────────
+const pills = document.querySelectorAll('.category-pill');
+const articlesList = document.querySelectorAll('.flat-article');
+
+if (pills.length > 0 && articlesList.length > 0) {
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            // Update active state
+            pills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            
+            const cat = pill.textContent.toLowerCase();
+            
+            articlesList.forEach(art => {
+                const subtitle = art.querySelector('.flat-subtitle').textContent.toLowerCase();
+                
+                // Show all if 'General' is clicked, otherwise filter
+                if (cat === 'general' || subtitle.includes(cat) || subtitle.includes(cat.replace('holes', 'hole'))) {
+                    // Make sure it doesn't have the 'hidden' class if it was an archive item
+                    art.classList.remove('hidden'); 
+                    art.style.display = 'flex';
+                } else {
+                    art.style.display = 'none';
+                }
+            });
+            
+            // Hide the view archive button if filtering
+            const archiveBtn = document.getElementById('view-archive-btn');
+            if (archiveBtn) {
+                archiveBtn.parentElement.style.display = 'none';
+            }
+        });
+    });
+}

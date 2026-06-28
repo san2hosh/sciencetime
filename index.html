@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -39,6 +39,27 @@
                     <a href="#essays" class="nav-link">/essays</a>
                     <a href="#about" class="nav-link">/about</a>
                     <a href="#subscribe" class="nav-link">/subscribe</a>
+
+                    <button class="theme-toggle-btn" aria-label="Toggle theme">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
                 </nav>
                 <button id="mob-btn" class="mobile-toggle sc" aria-label="Toggle menu"
                     aria-expanded="false">[menu]</button>
@@ -47,24 +68,47 @@
                 <a href="#essays" class="nav-link">/essays</a>
                 <a href="#about" class="nav-link">/about</a>
                 <a href="#subscribe" class="nav-link">/subscribe</a>
+
+                <button class="theme-toggle-btn nav-link"
+                    style="text-align: left; background: none; border: none; cursor: pointer; color: inherit; font-family: inherit; font-size: inherit;"
+                    aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </nav>
         </header>
 
         <!-- ── Hero ── -->
         <section id="hero" class="hero-section section-pad">
             <div class="container">
-                <p class="section-label sc">&gt; cd /universe/exploration</p>
+                <!-- <p class="section-label sc">&gt; cd /universe/exploration</p> -->
 
                 <div class="hero-title">
-                    <span class="sc">/*</span><br>
+                    <span class="sc"></span><br>
                     <span id="hero-text" class="sg"></span><span class="hero-cursor"></span><br>
-                    <span class="sc">*/</span>
+                    <span class="sc"></span>
                 </div>
 
                 <p class="hero-desc sc">
-                    Science take on nature of reality.<br>
+                    Santhosh Telagasetti, PhD.<br>
                 </p>
-                <p class="hero-hint sc">[ move your cursor to bend spacetime ]</p>
+                <p class="hero-hint sc">[ Sharing my views on Nature. ]</p>
 
                 <a href="#essays" class="btn-read sf">
                     read_latest<span class="so">()</span> <span class="sc">→</span>
@@ -82,134 +126,137 @@
 
         <!-- ── Essays ── -->
         <section id="essays" class="essays-section section-pad section-bg">
-            <div class="container">
-                <p class="section-label sc">// section</p>
-                <h2 class="section-title"><span class="sf">recent_writes</span><span class="so">()</span></h2>
-                <p class="section-desc sc">// Latest essays on science, physics, and the cosmos</p>
+            <div class="container layout-grid">
+                <div class="main-column">
+                    <h2 class="category-heading">LATEST ARTICLES</h2>
 
-                <div class="articles-list" id="articles-list">
-                    <!-- Article 1 -->
-                    <article class="article-card">
-                        <div class="article-inner">
-                            <div class="article-lines">
-                                <span class="line-num">01</span>
-                                <span class="line-num">02</span>
-                                <span class="line-num">03</span>
-                                <span class="line-num">04</span>
-                                <span class="line-num">05</span>
-                                <span class="line-num">06</span>
-                                <span class="line-num">07</span>
-                                <span class="line-num">08</span>
-                                <span class="line-num">09</span>
-                                <span class="line-num">10</span>
-                            </div>
-                            <div class="article-content">
-                                <div><span class="sc">/**</span></div>
-                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="sk">The Illusion of
-                                        Time</span></div>
-                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="tag">"physics"</span> <span
-                                        class="tag">"relativity"</span> <span class="tag">"entropy"</span></div>
-                                <div><span class="sc">*/</span></div>
-                                <div class="spacer"></div>
-                                <div class="article-body">
-                                    <div>Is time a fundamental property of reality,</div>
-                                    <div>or an emergent phenomenon arising from</div>
-                                    <div>the second law of thermodynamics?</div>
-                                </div>
-                                <div class="spacer"></div>
-                                <div class="article-footer">
-                                    <span class="sn">2024.12.15</span>
-                                    <span class="sc">·</span>
-                                    <span class="sc">8_min_read</span>
-                                    <a href="articles/the-illusion-of-time.html" class="sf read-link">read() →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                    <div class="articles-list" id="articles-list">
+                        <!-- Article 1 -->
+                        <article class="flat-article">
+                            <h3 class="flat-title">The Illusion of Time</h3>
+                            <p class="flat-subtitle">Physics, Relativity & Entropy</p>
+                            <p class="flat-body">
+                                Is time a fundamental property of reality, or an emergent phenomenon arising from the
+                                second law of thermodynamics?
+                            </p>
+                            <a href="articles/the-illusion-of-time.html" class="flat-read-link">Read more</a>
+                        </article>
 
-                    <!-- Article 2 -->
-                    <article class="article-card">
-                        <div class="article-inner">
-                            <div class="article-lines">
-                                <span class="line-num">01</span>
-                                <span class="line-num">02</span>
-                                <span class="line-num">03</span>
-                                <span class="line-num">04</span>
-                                <span class="line-num">05</span>
-                                <span class="line-num">06</span>
-                                <span class="line-num">07</span>
-                                <span class="line-num">08</span>
-                                <span class="line-num">09</span>
-                                <span class="line-num">10</span>
-                            </div>
-                            <div class="article-content">
-                                <div><span class="sc">/**</span></div>
-                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="sk">Dark Matter: The
-                                        Invisible Scaffold</span></div>
-                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="tag">"cosmology"</span>
-                                    <span class="tag">"astrophysics"</span>
-                                </div>
-                                <div><span class="sc">*/</span></div>
-                                <div class="spacer"></div>
-                                <div class="article-body">
-                                    <div>85% of the matter in the universe is</div>
-                                    <div>invisible. What we know about dark matter,</div>
-                                    <div>and why it might not exist at all.</div>
-                                </div>
-                                <div class="spacer"></div>
-                                <div class="article-footer">
-                                    <span class="sn">2024.11.28</span>
-                                    <span class="sc">·</span>
-                                    <span class="sc">12_min_read</span>
-                                    <a href="articles/dark-matter.html" class="sf read-link">read() →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        <!-- Article 2 -->
+                        <article class="flat-article">
+                            <h3 class="flat-title">Dark Matter: The Invisible Scaffold</h3>
+                            <p class="flat-subtitle">Cosmology & Astrophysics</p>
+                            <p class="flat-body">
+                                85% of the matter in the universe is invisible. What we know about dark matter, and why
+                                it might not exist at all.
+                            </p>
+                            <a href="articles/dark-matter.html" class="flat-read-link">Read more</a>
+                        </article>
 
-                    <!-- Article 3 -->
-                    <article class="article-card">
-                        <div class="article-inner">
-                            <div class="article-lines">
-                                <span class="line-num">01</span>
-                                <span class="line-num">02</span>
-                                <span class="line-num">03</span>
-                                <span class="line-num">04</span>
-                                <span class="line-num">05</span>
-                                <span class="line-num">06</span>
-                                <span class="line-num">07</span>
-                                <span class="line-num">08</span>
-                                <span class="line-num">09</span>
-                                <span class="line-num">10</span>
-                            </div>
-                            <div class="article-content">
-                                <div><span class="sc">/**</span></div>
-                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="sk">Quantum Entanglement
-                                        Demystified</span></div>
-                                <div>&nbsp;&nbsp;<span class="so">*</span>&nbsp;<span class="tag">"quantum"</span> <span
-                                        class="tag">"physics"</span> <span class="tag">"spooky"</span></div>
-                                <div><span class="sc">*/</span></div>
-                                <div class="spacer"></div>
-                                <div class="article-body">
-                                    <div>Einstein called it "spooky action at a</div>
-                                    <div>distance." But quantum entanglement is</div>
-                                    <div>far stranger than even he imagined.</div>
-                                </div>
-                                <div class="spacer"></div>
-                                <div class="article-footer">
-                                    <span class="sn">2024.11.10</span>
-                                    <span class="sc">·</span>
-                                    <span class="sc">10_min_read</span>
-                                    <a href="articles/quantum-entanglement.html" class="sf read-link">read() →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        <!-- Article 3 -->
+                        <article class="flat-article">
+                            <h3 class="flat-title">Quantum Entanglement Demystified</h3>
+                            <p class="flat-subtitle">Quantum Physics</p>
+                            <p class="flat-body">
+                                Einstein called it "spooky action at a distance." But quantum entanglement is far
+                                stranger than even he imagined.
+                            </p>
+                            <a href="articles/quantum-entanglement.html" class="flat-read-link">Read more</a>
+                        </article>
+
+                        <!-- Article 4 (Archive) -->
+                        <article class="flat-article hidden archive-item">
+                            <h3 class="flat-title">The Geometry of Space-Time</h3>
+                            <p class="flat-subtitle">Relativity & Geometry</p>
+                            <p class="flat-body">
+                                How Einstein bent the rules of geometry to explain gravity and the shape of our
+                                universe.
+                            </p>
+                            <a href="articles/the-geometry-of-spacetime.html" class="flat-read-link">Read more</a>
+                        </article>
+
+                        <!-- Article 5 (Archive) -->
+                        <article class="flat-article hidden archive-item">
+                            <h3 class="flat-title">Black Holes and Paradoxes</h3>
+                            <p class="flat-subtitle">Blackholes & Paradoxes</p>
+                            <p class="flat-body">
+                                Where physics breaks down. Information loss and the ultimate fate of all matter that
+                                crosses the event horizon.
+                            </p>
+                            <a href="articles/black-holes-and-paradoxes.html" class="flat-read-link">Read more</a>
+                        </article>
+                    </div>
+
+                    <div class="view-archive">
+                        <a href="#" id="view-archive-btn" class="archive-link"
+                            style="color: var(--accent-color); font-weight: bold; margin-top: 1rem; display: inline-block;">View
+                            Archive <span>→</span></a>
+                    </div>
                 </div>
 
-                <div class="view-archive">
-                    <a href="#" class="sc archive-link">view_archive() <span>→</span></a>
-                </div>
+                <aside class="sidebar-column">
+                    <section class="sidebar-section">
+                        <h2 class="category-heading">BROWSE BY CATEGORY</h2>
+                        <div class="category-pills">
+                            <span class="category-pill">Physics</span>
+                            <span class="category-pill">Cosmology</span>
+                            <span class="category-pill">Quantum</span>
+                            <span class="category-pill">Relativity</span>
+                            <span class="category-pill">Astrophysics</span>
+                            <span class="category-pill active">General</span>
+                        </div>
+                    </section>
+
+                    <section class="sidebar-section">
+                        <h2 class="category-heading">POPULAR CONTENT</h2>
+                        <ul class="popular-list">
+                            <li>
+                                <a href="articles/the-geometry-of-spacetime.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="arrow-icon">
+                                        <line x1="5" y1="12" y2="12" x2="19"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                    An Interactive Guide to Relativity
+                                </a>
+                            </li>
+                            <li>
+                                <a href="articles/the-illusion-of-time.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="arrow-icon">
+                                        <line x1="5" y1="12" y2="12" x2="19"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                    Understanding Entropy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="articles/quantum-entanglement.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="arrow-icon">
+                                        <line x1="5" y1="12" y2="12" x2="19"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                    The End of Classical Mechanics
+                                </a>
+                            </li>
+                            <li>
+                                <a href="articles/black-holes-and-paradoxes.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="arrow-icon">
+                                        <line x1="5" y1="12" y2="12" x2="19"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                    Why Light Speed is Constant
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </aside>
             </div>
         </section>
 
@@ -297,7 +344,7 @@
     </div>
 
     <!-- ====== SCRIPTS ====== -->
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>
