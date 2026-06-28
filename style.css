@@ -428,24 +428,22 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
     html { scroll-behavior: auto; }
 }
 
-@media (min-width: 640px) {
-    .section-pad { padding: 6rem 1.5rem; }
-
 /* ========================================= */
 /* Article Layout & TOC                      */
 /* ========================================= */
-
 .article-layout {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 8rem 1.5rem 6rem;
+    padding: 6rem 1.25rem 4rem; /* Reduced for mobile */
     display: flex;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 2rem;
     align-items: flex-start;
 }
 
 .article-content-wrapper {
     flex: 1;
+    width: 100%;
     max-width: 700px;
 }
 
@@ -492,16 +490,19 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
 .lg-block {
     display: none;
 }
+
 @media (min-width: 1024px) {
-    .lg-block {
-        display: block;
+    .lg-block { display: block; }
+    .article-layout {
+        padding: 8rem 1.5rem 6rem;
+        flex-direction: row;
+        gap: 4rem;
     }
 }
 
 /* ========================================= */
 /* Article Prose (High Readability Styling)  */
 /* ========================================= */
-
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -509,7 +510,7 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
     font-size: 0.875rem;
     color: #5c6370;
     text-decoration: none;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     transition: color 0.2s;
     font-family: 'JetBrains Mono', monospace;
 }
@@ -519,8 +520,8 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
 
 .prose {
     font-family: 'Newsreader', serif;
-    font-size: 1.25rem; /* 20px - highly readable */
-    line-height: 1.7;
+    font-size: 1.125rem; /* 18px for mobile */
+    line-height: 1.6;
     color: #e5e7eb; /* Soft off-white */
 }
 
@@ -530,8 +531,8 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
 
 .prose h1 {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
     font-weight: 300;
     color: #fff;
     line-height: 1.2;
@@ -539,9 +540,9 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
 
 .prose h2 {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.5rem;
-    margin-top: 3.5rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.35rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
     color: #61afef;
     font-weight: 500;
 }
@@ -552,7 +553,7 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
 }
 
 .prose p {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
 }
 
 .prose strong {
@@ -562,14 +563,43 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
 
 .prose blockquote {
     border-left: 3px solid #c678dd;
-    padding-left: 1.5rem;
-    margin: 2.5rem 0;
+    padding-left: 1.25rem;
+    margin: 2rem 0;
     font-style: italic;
     color: #c5c8c6;
     background: rgba(198, 120, 221, 0.05);
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.25rem;
     border-radius: 0 0.5rem 0.5rem 0;
+    font-size: 1.05rem;
 }
+
+@media (min-width: 768px) {
+    .prose {
+        font-size: 1.25rem; /* 20px */
+        line-height: 1.7;
+    }
+    .prose h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .prose h2 {
+        font-size: 1.5rem;
+        margin-top: 3.5rem;
+        margin-bottom: 1.25rem;
+    }
+    .prose blockquote {
+        padding-left: 1.5rem;
+        padding: 1rem 1.5rem;
+        margin: 2.5rem 0;
+        font-size: inherit;
+    }
+}
+
+/* ========================================= */
+/* Index Responsive Breakpoints              */
+/* ========================================= */
+@media (min-width: 640px) {
+    .section-pad { padding: 6rem 1.5rem; }
     .hero-title { font-size: 2.25rem; }
     .hero-desc { font-size: 1rem; }
     .desktop-nav { display: flex; }
@@ -579,9 +609,11 @@ a:focus-visible { outline: 1px solid #00ff9c; outline-offset: 3px; }
     .article-inner { padding: 1.75rem; }
     .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
 }
+
 @media (min-width: 768px) {
     .hero-title { font-size: 2.5rem; }
 }
+
 @media (min-width: 1024px) {
     .hero-title { font-size: 3.6rem; }
 }
